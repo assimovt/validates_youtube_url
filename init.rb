@@ -8,9 +8,13 @@ module ValidatesYoutubeUrl
   def validates_youtube_url(*attr_names)
     validates_each(attr_names) do |record, attr_name, value|
       unless value.nil?
-        id = value.match(REGEXP)[1]
-        status = Net::HTTP.get_response(URI.parse("http://gdata.youtube.com/feeds/api/videos/#{id}")) rescue false
-        record.errors.add(attr_name, DEFAULT_MESSAGE) unless status.is_a?(Net::HTTPOK)
+        begin
+          id = value.match(REGEXP)[1]
+          status = Net::HTTP.get_response(URI.parse("http://gdata.youtube.com/feeds/api/videos/#{id}"))
+          raise unless status.is_a?(Net::HTTPOK)
+        rescue
+          record.errors.add(attr_name, DEFAULT_MESSAGE)
+        end
       end
     end
   end
