@@ -11,8 +11,8 @@ Plugin extracts YouTube ID from the provided URL and further validates against Y
     
 ## Caveats
 
-The plugin does not validate the format of URL or checks for the nil value, therefor good to be used in conjuction
-with [`validates_url_format_of`](http://github.com/henrik/validates_url_format_of/)
+The plugin does not validate the format of URL or checks for the nil value, therefore good to be used in conjunction
+with [validates_url_format_of](http://github.com/henrik/validates_url_format_of/)
   
 ## License
 

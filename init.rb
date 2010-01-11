@@ -5,7 +5,7 @@ module ValidatesYoutubeUrl
   REGEXP = /watch\?v=(.*?)(?:&feature|\Z)/
   DEFAULT_MESSAGE     = 'does not appear to be a valid YouTube URL'
   
-  def validates_url_format_of(*attr_names)
+  def validates_youtube_url(*attr_names)
     validates_each(attr_names) do |record, attr_name, value|
       unless value.nil?
         id = value.match(REGEXP)[1]
